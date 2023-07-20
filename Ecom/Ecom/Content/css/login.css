@@ -1,0 +1,19 @@
+﻿*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+.cards{
+    height:450px;
+    width:380px;
+    box-shadow:rgb(128 128 128);
+    margin:auto;
+    margin-top:100px;  
+    position:relative;
+}
+.btns {
+    background-image: radial-gradient(rgb(115 25 180),rgb(160 65 162));
+    width:100px;
+    font-family:sans-serif;
+    margin:auto;
+}

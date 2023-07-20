@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eCommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="address" />
+    </Key>
+    <Property Name="id" Type="int" />
+    <Property Name="address" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="addressline1" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="addressline2" Type="nvarchar" MaxLength="100" />
+    <Property Name="addressline3" Type="nvarchar" MaxLength="100" />
+    <Property Name="city" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="state" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="pincode" Type="int" Nullable="false" />
+    <Property Name="landmark" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="contacts">
+    <Key>
+      <PropertyRef Name="contactId" />
+    </Key>
+    <Property Name="id" Type="int" />
+    <Property Name="contactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="phoneNumber1" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="phoneNumber2" Type="nvarchar" MaxLength="13" />
+    <Property Name="phoneNumber3" Type="nvarchar" MaxLength="13" />
+    <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="middleName" Type="nvarchar" MaxLength="20" />
+    <Property Name="lastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="dob" Type="date" Nullable="false" />
+    <Property Name="userId" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="salt" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__address__id__1AD3FDA4">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="address" Type="Self.address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="address">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__contacts__id__17F790F9">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="contacts" Type="Self.contacts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="contacts">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="eCommerceModelStoreContainer">
+    <EntitySet Name="address" EntityType="Self.address" Schema="account" store:Type="Tables" />
+    <EntitySet Name="contacts" EntityType="Self.contacts" Schema="account" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="account" store:Type="Tables" />
+    <AssociationSet Name="FK__address__id__1AD3FDA4" Association="Self.FK__address__id__1AD3FDA4">
+      <End Role="users" EntitySet="users" />
+      <End Role="address" EntitySet="address" />
+    </AssociationSet>
+    <AssociationSet Name="FK__contacts__id__17F790F9" Association="Self.FK__contacts__id__17F790F9">
+      <End Role="users" EntitySet="users" />
+      <End Role="contacts" EntitySet="contacts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

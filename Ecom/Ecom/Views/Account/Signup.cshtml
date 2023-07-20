@@ -1,0 +1,108 @@
+﻿@model Ecom.Models.UserDetails
+
+
+
+@{
+    ViewBag.Title = "Signup";
+}
+
+@using (Html.BeginForm("Signup", "Account", FormMethod.Post, new { @class = "container" }))
+{
+    <div class="card animate__animated animate__fadeIn">
+        <div class="card-header">
+            <h2>SignUp Form</h2>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.User.firstName)
+                    @Html.TextBoxFor(x => x.User.firstName, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.User.middleName)
+                    @Html.TextBoxFor(x => x.User.middleName, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.User.lastName)
+                    @Html.TextBoxFor(x => x.User.lastName, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.Contact.phoneNumber1)
+                    @Html.TextBoxFor(x => x.Contact.phoneNumber1, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.Contact.phoneNumber2)
+                    @Html.TextBoxFor(x => x.Contact.phoneNumber2, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.Contact.phoneNumber3)
+                    @Html.TextBoxFor(x => x.Contact.phoneNumber3, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-8">
+                    @Html.DisplayNameFor(x => x.Contact.email)
+                    @Html.TextBoxFor(x => x.Contact.email, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.Address.city)
+                    @Html.TextBoxFor(x => x.Address.city, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    @Html.DisplayNameFor(x => x.Address.addressline1)
+                    @Html.TextBoxFor(x => x.Address.addressline1, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    @Html.DisplayNameFor(x => x.Address.addressline2)
+                    @Html.TextBoxFor(x => x.Address.addressline2, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    @Html.DisplayNameFor(x => x.Address.addressline3)
+                    @Html.TextBoxFor(x => x.Address.addressline3, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.Address.state)
+                    @Html.TextBoxFor(x => x.Address.state, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.Address.pincode)
+                    @Html.TextBoxFor(x => x.Address.pincode, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.Address.landmark)
+                    @Html.TextBoxFor(x => x.Address.landmark, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.User.userId)
+                    @Html.TextBoxFor(x => x.User.userId, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayNameFor(x => x.User.password)
+                    @Html.TextBoxFor(x => x.User.password, new { @class = "form-control" })
+                </div>
+            </div>
+            <hr />
+            <div class="d-grid gap-2">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
