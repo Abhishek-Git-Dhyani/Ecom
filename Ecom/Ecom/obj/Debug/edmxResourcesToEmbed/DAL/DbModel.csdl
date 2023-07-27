@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eCommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="address1" />
+    </Key>
+    <Property Name="id" Type="Int32" />
+    <Property Name="address1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="addressline1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="addressline2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="addressline3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="state" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pincode" Type="Int32" Nullable="false" />
+    <Property Name="landmark" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="user" Relationship="Self.FK__address__id__3B75D760" FromRole="address" ToRole="users" />
+  </EntityType>
+  <EntityType Name="contact">
+    <Key>
+      <PropertyRef Name="contactId" />
+    </Key>
+    <Property Name="id" Type="Int32" />
+    <Property Name="contactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="phoneNumber1" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phoneNumber2" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="phoneNumber3" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK__contacts__id__38996AB5" FromRole="contacts" ToRole="users" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="middleName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="userId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="salt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="addresses" Relationship="Self.FK__address__id__3B75D760" FromRole="users" ToRole="address" />
+    <NavigationProperty Name="contacts" Relationship="Self.FK__contacts__id__38996AB5" FromRole="users" ToRole="contacts" />
+    <Property Name="userType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__address__id__3B75D760">
+    <End Role="users" Type="Self.user" Multiplicity="0..1" />
+    <End Role="address" Type="Self.address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="address">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__contacts__id__38996AB5">
+    <End Role="users" Type="Self.user" Multiplicity="0..1" />
+    <End Role="contacts" Type="Self.contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="contacts">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="addresses" EntityType="Self.address" />
+    <EntitySet Name="contacts" EntityType="Self.contact" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK__address__id__3B75D760" Association="Self.FK__address__id__3B75D760">
+      <End Role="users" EntitySet="users" />
+      <End Role="address" EntitySet="addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__contacts__id__38996AB5" Association="Self.FK__contacts__id__38996AB5">
+      <End Role="users" EntitySet="users" />
+      <End Role="contacts" EntitySet="contacts" />
+    </AssociationSet>
+    <EntitySet Name="Stores" EntityType="eCommerceModel.Store" />
+  </EntityContainer>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="storeId" Type="Int32" Nullable="false" />
+    <Property Name="CenterCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="state" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="pincode" Type="Int32" Nullable="false" />
+    <Property Name="lattitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="longitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

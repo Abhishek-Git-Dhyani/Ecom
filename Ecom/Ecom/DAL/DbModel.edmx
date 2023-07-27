@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eCommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="address" />
+          </Key>
+          <Property Name="id" Type="int" />
+          <Property Name="address" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="addressline1" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="addressline2" Type="nvarchar" MaxLength="100" />
+          <Property Name="addressline3" Type="nvarchar" MaxLength="100" />
+          <Property Name="city" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="state" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="pincode" Type="int" Nullable="false" />
+          <Property Name="landmark" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="contacts">
+          <Key>
+            <PropertyRef Name="contactId" />
+          </Key>
+          <Property Name="id" Type="int" />
+          <Property Name="contactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="phoneNumber1" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="phoneNumber2" Type="nvarchar" MaxLength="13" />
+          <Property Name="phoneNumber3" Type="nvarchar" MaxLength="13" />
+          <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="middleName" Type="nvarchar" MaxLength="20" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="dob" Type="date" Nullable="false" />
+          <Property Name="userId" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="salt" Type="nvarchar" MaxLength="100" />
+          <Property Name="userType" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Stores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="storeId" Type="int" Nullable="false" />
+          <Property Name="CenterCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="state" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="pincode" Type="int" Nullable="false" />
+          <Property Name="lattitude" Type="nvarchar" MaxLength="100" />
+          <Property Name="longitude" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__address__id__3B75D760">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="address" Type="Self.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__contacts__id__38996AB5">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="contacts" Type="Self.contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contacts">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eCommerceModelStoreContainer">
+          <EntitySet Name="address" EntityType="Self.address" Schema="account" store:Type="Tables" />
+          <EntitySet Name="contacts" EntityType="Self.contacts" Schema="account" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="account" store:Type="Tables" />
+          <EntitySet Name="Stores" EntityType="Self.Stores" Schema="Inventory" store:Type="Tables" />
+          <AssociationSet Name="FK__address__id__3B75D760" Association="Self.FK__address__id__3B75D760">
+            <End Role="users" EntitySet="users" />
+            <End Role="address" EntitySet="address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__contacts__id__38996AB5" Association="Self.FK__contacts__id__38996AB5">
+            <End Role="users" EntitySet="users" />
+            <End Role="contacts" EntitySet="contacts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eCommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="address1" />
+          </Key>
+          <Property Name="id" Type="Int32" />
+          <Property Name="address1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="addressline1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="addressline2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="addressline3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pincode" Type="Int32" Nullable="false" />
+          <Property Name="landmark" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Self.FK__address__id__3B75D760" FromRole="address" ToRole="users" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="contactId" />
+          </Key>
+          <Property Name="id" Type="Int32" />
+          <Property Name="contactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="phoneNumber1" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phoneNumber2" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="phoneNumber3" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK__contacts__id__38996AB5" FromRole="contacts" ToRole="users" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="middleName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="userId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="salt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="addresses" Relationship="Self.FK__address__id__3B75D760" FromRole="users" ToRole="address" />
+          <NavigationProperty Name="contacts" Relationship="Self.FK__contacts__id__38996AB5" FromRole="users" ToRole="contacts" />
+          <Property Name="userType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__address__id__3B75D760">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="address" Type="Self.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__contacts__id__38996AB5">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="contacts" Type="Self.contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contacts">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="addresses" EntityType="Self.address" />
+          <EntitySet Name="contacts" EntityType="Self.contact" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK__address__id__3B75D760" Association="Self.FK__address__id__3B75D760">
+            <End Role="users" EntitySet="users" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__contacts__id__38996AB5" Association="Self.FK__contacts__id__38996AB5">
+            <End Role="users" EntitySet="users" />
+            <End Role="contacts" EntitySet="contacts" />
+          </AssociationSet>
+          <EntitySet Name="Stores" EntityType="eCommerceModel.Store" />
+        </EntityContainer>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="storeId" Type="Int32" Nullable="false" />
+          <Property Name="CenterCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="pincode" Type="Int32" Nullable="false" />
+          <Property Name="lattitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="longitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eCommerceModelStoreContainer" CdmEntityContainer="DbEntities">
+          <EntitySetMapping Name="addresses">
+            <EntityTypeMapping TypeName="eCommerceModel.address">
+              <MappingFragment StoreEntitySet="address">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="address1" ColumnName="address" />
+                <ScalarProperty Name="addressline1" ColumnName="addressline1" />
+                <ScalarProperty Name="addressline2" ColumnName="addressline2" />
+                <ScalarProperty Name="addressline3" ColumnName="addressline3" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="landmark" ColumnName="landmark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contacts">
+            <EntityTypeMapping TypeName="eCommerceModel.contact">
+              <MappingFragment StoreEntitySet="contacts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="contactId" ColumnName="contactId" />
+                <ScalarProperty Name="phoneNumber1" ColumnName="phoneNumber1" />
+                <ScalarProperty Name="phoneNumber2" ColumnName="phoneNumber2" />
+                <ScalarProperty Name="phoneNumber3" ColumnName="phoneNumber3" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="eCommerceModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="userType" ColumnName="userType" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="middleName" ColumnName="middleName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="salt" ColumnName="salt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="eCommerceModel.Store">
+              <MappingFragment StoreEntitySet="Stores">
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="lattitude" ColumnName="lattitude" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CenterCode" ColumnName="CenterCode" />
+                <ScalarProperty Name="storeId" ColumnName="storeId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

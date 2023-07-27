@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eCommerceModelStoreContainer" CdmEntityContainer="DbEntities">
+    <EntitySetMapping Name="addresses">
+      <EntityTypeMapping TypeName="eCommerceModel.address">
+        <MappingFragment StoreEntitySet="address">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="address1" ColumnName="address" />
+          <ScalarProperty Name="addressline1" ColumnName="addressline1" />
+          <ScalarProperty Name="addressline2" ColumnName="addressline2" />
+          <ScalarProperty Name="addressline3" ColumnName="addressline3" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="landmark" ColumnName="landmark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contacts">
+      <EntityTypeMapping TypeName="eCommerceModel.contact">
+        <MappingFragment StoreEntitySet="contacts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="contactId" ColumnName="contactId" />
+          <ScalarProperty Name="phoneNumber1" ColumnName="phoneNumber1" />
+          <ScalarProperty Name="phoneNumber2" ColumnName="phoneNumber2" />
+          <ScalarProperty Name="phoneNumber3" ColumnName="phoneNumber3" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="eCommerceModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="userType" ColumnName="userType" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="middleName" ColumnName="middleName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stores">
+      <EntityTypeMapping TypeName="eCommerceModel.Store">
+        <MappingFragment StoreEntitySet="Stores">
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="lattitude" ColumnName="lattitude" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CenterCode" ColumnName="CenterCode" />
+          <ScalarProperty Name="storeId" ColumnName="storeId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

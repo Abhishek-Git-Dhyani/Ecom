@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Ecom.DAL.Store>
+
+@{
+    ViewBag.Title = "Stores";
+}
+
+<div class="container mt-5 border-primary border-3">
+    <div id="map" style="height: 400px;"></div>
+</div>
+
+
+<div class="container mt-5">
+    <hr />
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-primary">Stores List</h2>
+        </div>
+        <div class="col-6">
+            @if(ViewData["userType"] != null && ViewData["userType"].ToString().ToUpper() == "ADMIN")
+            {
+                @Html.ActionLink("Add Store", "addStore", "Resource", new { @class = "btn btn-primary rounded-4 box-shadow", @style = "float:right" })
+            }
+        </div>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered table-sm">
+            <thead>
+                <tr class="text-center">
+                    <th>Sr.No.</th>
+                    <th>Center Code</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Pincode</th>
+                    @{
+                        if(ViewData["userType"] != null && ViewData["userType"].ToString().ToUpper() == "ADMIN")
+                        {
+                            <th style="width:180px">CRUD</th>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="justify-content-center">
+                    @foreach (var item in Model)
+                    {
+                        <td>@item.storeId</td>
+                        <td>@item.CenterCode</td>
+                        <td>@item.Address</td>
+                        <td>@item.city</td>
+                        <td>@item.state</td>
+                        <td>@item.pincode</td>
+                        {
+                            if (ViewData["userType"] != null && ViewData["userType"].ToString().ToUpper() == "ADMIN")
+                            {
+                                <td class="text-center">
+                                    <div>
+                                        @Html.ActionLink("Edit", "EditStore", "Resource", new { @class = "btn btn-success", @style = "width:70px" })
+
+                                        @Html.ActionLink("Delete", "DeleteStore", "Resource", new { @class = "btn btn-danger", @style = "width:70px" })
+                                    </div>
+                                </td>
+                            }
+                        }
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function initMap() {
+        // Set the initial center coordinates of the map
+        var initialCenter = { lat: 40.7128, lng: -74.0060 }; // New York City coordinates
+
+        // Create the map and set the center and zoom level
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: initialCenter,
+            zoom: 8 // Adjust the zoom level as needed
+        });
+
+        // You can add markers, polygons, and other map features here
+        // For example:
+        // var marker = new google.maps.Marker({
+        //     position: initialCenter,
+        //     map: map,
+        //     title: 'Hello, this is New York City!'
+        // });
+    }
+</script>

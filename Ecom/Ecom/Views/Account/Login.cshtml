@@ -1,0 +1,53 @@
+﻿@model Ecom.DAL.user
+
+@{ ViewBag.Title = "Login"; }
+
+@if (TempData["msg"] != null)
+{
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Wrong Password',
+        text: 'Please Enter a correct password'
+    })
+</script>}
+
+@if (TempData["InvalidUser"] != null)
+{
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'User Not Present',
+        text: 'Provide a valid user Name'
+    })
+</script>}
+
+<link href="~/Content/css/login.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+<div class="card">
+    <div class="container">
+        <h2>
+            LoginForm
+        </h2>
+        <hr />
+        <div class="row mb-3">
+            @Html.DisplayNameFor(x => x.userId)
+            @Html.TextBoxFor(x => x.userId, new { @class = "form-control" })
+        </div>
+        <div class="row mb-3">
+            @Html.DisplayNameFor(x => x.password)
+            @Html.TextBoxFor(x => x.password, new { @class = "form-control" })
+        </div>
+        <div class="row mb-3">
+            <button type="submit" class="btn btn-primary">Log-In</button>
+        </div>
+        <hr />
+        <div class="row mb-3">
+            @Html.ActionLink("Sign-up", "Signup", "Account", null, new { @class = "btn btn-info" })
+        </div>
+    </div>
+</div>}
+
+
