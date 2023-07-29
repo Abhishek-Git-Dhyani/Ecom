@@ -1,4 +1,5 @@
 ﻿using Ecom.DAL;
+using Ecom.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,11 +36,7 @@ namespace Ecom.Controllers
 
                 using(DbEntities db = new DbEntities())
                 {
-                    if(ViewData["userType"] != null)
-                    {
-                        //userType = db.users.FirstOrDefault(x => x.userId == userId).userType;
-                        ViewData["userType"] = userType;
-                    }
+                    ViewData["userType"] = GlobalFields.userType;
                     var storeDetails = db.Stores.ToList();
                     return View(storeDetails);
                 }
@@ -49,10 +46,35 @@ namespace Ecom.Controllers
                 throw;
             }            
         }
-        [HttpPost]
-        public ActionResult Stores(int id)
+        [HttpGet]
+        public ActionResult addStore()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult addStore(Store store)
+        {
+            try
+            {
+                if(ModelState.IsValid == true)
+                {
+                    using (DbEntities db = new DbEntities())
+                    {
+                        db.Stores.Add(store);
+                        db.SaveChanges();
+                    }
+                    return View();
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

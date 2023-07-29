@@ -1,0 +1,45 @@
+﻿@model Ecom.DAL.Store
+@{
+    ViewBag.Title = "addStore";
+}
+
+@using (Html.BeginForm("addStore","Resources",FormMethod.Post))
+{
+    <div class="container mt-5 border border-1 border-dark">
+        <h2>Store Details</h2>
+        <hr />
+        <div class="row mb-3">
+            <div class="col-4">
+                @Html.LabelFor(x => x.storeId)
+                @Html.TextBoxFor(x=>x.storeId,new { @class="form-control"})
+            </div>
+            <div class="col-4">
+                @Html.LabelFor(x => x.CenterCode)
+                @Html.TextBoxFor(x => x.CenterCode, new { @class = "form-control" })
+            </div>
+            <div class="col-4">
+                @Html.LabelFor(x => x.pincode)
+                @Html.TextBoxFor(x => x.pincode, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12">
+                @Html.LabelFor(x => x.Address)
+                @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-6">
+                @Html.LabelFor(x => x.city)
+                @Html.TextBoxFor(x => x.city, new { @class = "form-control" })
+            </div>
+            <div class="col-6">
+                @Html.LabelFor(x => x.state)
+                @Html.TextBoxFor(x => x.state, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row mb-3 justify-content-center">
+            @Html.ActionLink("ADD STORE", "addStore", "Resource", null, new { @class = "btn btn-primary", @type = "Submit" , @style="width:150px" })
+        </div>
+    </div>
+}

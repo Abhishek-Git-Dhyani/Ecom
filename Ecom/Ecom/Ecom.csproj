@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="Models\CenterDetails.cs" />
     <Compile Include="Models\Encryptions.cs" />
+    <Compile Include="Models\GlobalFields.cs" />
     <Compile Include="Models\UserDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -227,6 +228,7 @@
     <Content Include="Views\Account\Data.cshtml" />
     <Content Include="Views\Resources\Services.cshtml" />
     <Content Include="Views\Resources\Stores.cshtml" />
+    <Content Include="Views\Resources\addStore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

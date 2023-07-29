@@ -49,6 +49,8 @@ namespace Ecom.Controllers
                                     .Where(x => x.userId == userId).FirstOrDefault()
                                     .userType.ToString();
 
+                                GlobalFields.userType = userType;
+
                                 DbPassword = db.users.Where(x => x.userId == userId).Select(x => x.password).FirstOrDefault();
                                 salt = db.users.Where(x => x.userId == userId).Select(x => x.salt).FirstOrDefault();
 
@@ -57,8 +59,7 @@ namespace Ecom.Controllers
 
                                 if (isUservalid == true)
                                 {
-                                    TempData["msg"] = "Logged In";
-                                    //FormsAuthentication.SetAuthCookie(userName,false);
+                                    TempData["msg"] = "Logged In";                                    
                                     Session["user"] = userName;
                                     //ViewData["userType"] = userType;
                                     return RedirectToAction("Index", "Home", Session["user"]);
@@ -124,6 +125,7 @@ namespace Ecom.Controllers
         }
         public ActionResult Logout()
         {
+            GlobalFields.userType = string.Empty;
             Session.Clear();
             return RedirectToAction("Index","Home");
         }
