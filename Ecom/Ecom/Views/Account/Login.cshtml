@@ -10,7 +10,8 @@
         title: 'Wrong Password',
         text: 'Please Enter a correct password'
     })
-</script>}
+</script>
+}
 
 @if (TempData["InvalidUser"] != null)
 {
@@ -20,34 +21,36 @@
         title: 'User Not Present',
         text: 'Provide a valid user Name'
     })
-</script>}
+</script>
+}
 
 <link href="~/Content/css/login.css" rel="stylesheet" />
 
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
-<div class="card">
-    <div class="container">
-        <h2>
-            LoginForm
-        </h2>
-        <hr />
-        <div class="row mb-3">
-            @Html.DisplayNameFor(x => x.userId)
-            @Html.TextBoxFor(x => x.userId, new { @class = "form-control" })
-        </div>
-        <div class="row mb-3">
-            @Html.DisplayNameFor(x => x.password)
-            @Html.TextBoxFor(x => x.password, new { @class = "form-control" })
-        </div>
-        <div class="row mb-3">
-            <button type="submit" class="btn btn-primary">Log-In</button>
-        </div>
-        <hr />
-        <div class="row mb-3">
-            @Html.ActionLink("Sign-up", "Signup", "Account", null, new { @class = "btn btn-info" })
+    <div class="cards border border-1">
+        <div class="px-3 py-3" >
+            <div class="d-flex justify-content-center">
+                <h2>
+                    LoginForm
+                </h2>
+            </div>
+            <hr />
+            <div class="mb-3">
+                @Html.DisplayNameFor(x => x.userId)
+                @Html.TextBoxFor(x => x.userId, new { @class = "form-control" })
+            </div>
+            <div class="mb-3">
+                @Html.DisplayNameFor(x => x.password)
+                @Html.TextBoxFor(x => x.password, new { @class = "form-control" })
+            </div>
+            <div class="mb-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary" style="width:200px">Log-In</button>
+            </div>
+            <hr />
+            <div class="mb-3 d-flex justify-content-center">
+                @Html.ActionLink("Sign-up", "Signup", "Account", null, new { @class = "btn btn-info" , @style="width:200px" })
+            </div>
         </div>
     </div>
-</div>}
-
-
+}

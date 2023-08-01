@@ -1,9 +1,10 @@
 ﻿@model Ecom.DAL.Store
+
 @{
-    ViewBag.Title = "addStore";
+    ViewBag.Title = "editStore";
 }
 
-@using (Html.BeginForm("addStore","Resources",FormMethod.Post))
+@using (Html.BeginForm("editStore", "Resources", FormMethod.Post))
 {
     <div class="container mt-5 border border-1 border-dark">
         <h2>Store Details</h2>
@@ -11,7 +12,7 @@
         <div class="row mb-3">
             <div class="col-4">
                 @Html.LabelFor(x => x.storeId)
-                @Html.TextBoxFor(x=>x.storeId,new { @class="form-control"})
+                @Html.TextBoxFor(x => x.storeId, new { @class = "form-control" })
             </div>
             <div class="col-4">
                 @Html.LabelFor(x => x.CenterCode)
@@ -38,8 +39,9 @@
                 @Html.TextBoxFor(x => x.state, new { @class = "form-control" })
             </div>
         </div>
+        <hr />
         <div class="row mb-3 justify-content-center">
-            <button type="submit" class="btn btn-primary">ADD STORE</button>         
+            <button type="submit" class="btn btn-info" style="width:250px">EDIT STORE</button>
         </div>
     </div>
 }

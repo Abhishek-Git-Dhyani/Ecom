@@ -16,7 +16,7 @@
             <h2 class="text-primary">Stores List</h2>
         </div>
         <div class="col-6">
-            @if(ViewData["userType"] != null && ViewData["userType"].ToString().ToUpper() == "ADMIN")
+            @if (ViewData["userType"] != null && ViewData["userType"].ToString().ToUpper() == "ADMIN")
             {
                 @Html.ActionLink("Add Store", "addStore", "Resource", new { @class = "btn btn-primary rounded-4 box-shadow", @style = "float:right" })
             }
@@ -33,7 +33,7 @@
                     <th>State</th>
                     <th>Pincode</th>
                     @{
-                        if(ViewData["userType"] != null && ViewData["userType"].ToString().ToUpper() == "ADMIN")
+                        if (ViewData["userType"] != null && ViewData["userType"].ToString().ToUpper() == "ADMIN")
                         {
                             <th style="width:180px">CRUD</th>
                         }
@@ -41,29 +41,29 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="justify-content-center">
-                    @foreach (var item in Model)
-                    {
+                @foreach (var item in Model)
+                {
+                    <tr class="justify-content-center">
                         <td>@item.storeId</td>
                         <td>@item.CenterCode</td>
                         <td>@item.Address</td>
                         <td>@item.city</td>
                         <td>@item.state</td>
                         <td>@item.pincode</td>
-                        {
+                        @{
                             if (ViewData["userType"] != null && ViewData["userType"].ToString().ToUpper() == "ADMIN")
                             {
                                 <td class="text-center">
                                     <div>
-                                        @Html.ActionLink("Edit", "EditStore", "Resource", new { @class = "btn btn-success", @style = "width:70px" })
+                                        @Html.ActionLink("Edit", "editStore", "Resources",new {  id = item.storeId } , new { @class = "btn btn-success", @style = "width:70px" })
 
-                                        @Html.ActionLink("Delete", "DeleteStore", "Resource", new { @class = "btn btn-danger", @style = "width:70px" })
+                                        @Html.ActionLink("Delete", "deleteStore", "Resources", new { id = item.storeId }, new { @class = "btn btn-danger", @style = "width:70px" })
                                     </div>
                                 </td>
                             }
                         }
-                    }
-                </tr>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

@@ -227,8 +227,11 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Data.cshtml" />
     <Content Include="Views\Resources\Services.cshtml" />
-    <Content Include="Views\Resources\Stores.cshtml" />
     <Content Include="Views\Resources\addStore.cshtml" />
+    <Content Include="Views\Resources\deleteStore1.cshtml" />
+    <Content Include="Views\Resources\deleteStore.cshtml" />
+    <Content Include="Views\Resources\Stores.cshtml" />
+    <Content Include="Views\Resources\editStore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
