@@ -77,11 +77,6 @@ namespace Ecom.Controllers
                 throw;
             }
         }
-        //[HttpGet]
-        //public ActionResult deleteStore()
-        //{
-        //    return View();
-        //}
         [HttpGet]
         public ActionResult deleteStore(int ID)
         {
