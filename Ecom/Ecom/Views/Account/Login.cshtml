@@ -4,31 +4,31 @@
 
 @if (TempData["msg"] != null)
 {
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Wrong Password',
-        text: 'Please Enter a correct password'
-    })
-</script>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Wrong Password',
+            text: 'Please Enter a correct password'
+        })
+    </script>
 }
 
 @if (TempData["InvalidUser"] != null)
 {
-<script>
-    Swal.fire({
-        icon: 'error',
-        title: 'User Not Present',
-        text: 'Provide a valid user Name'
-    })
-</script>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'User Not Present',
+            text: 'Provide a valid user Name'
+        })
+    </script>
 }
 
 <link href="~/Content/css/login.css" rel="stylesheet" />
 
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
-    <div class="cards border border-1">
+    <div class="cards border border-1 rounded rounded-5">
         <div class="px-3 py-3" >
             <div class="d-flex justify-content-center">
                 <h2>
@@ -38,11 +38,11 @@
             <hr />
             <div class="mb-3">
                 @Html.DisplayNameFor(x => x.userId)
-                @Html.TextBoxFor(x => x.userId, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.userId, new { @class = "form-control rounded rounded-5" })
             </div>
             <div class="mb-3">
                 @Html.DisplayNameFor(x => x.password)
-                @Html.TextBoxFor(x => x.password, new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.password,new { @class = "form-control rounded rounded-5" })
             </div>
             <div class="mb-3 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary" style="width:200px">Log-In</button>

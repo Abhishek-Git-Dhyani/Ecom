@@ -40,7 +40,7 @@ namespace Ecom.Controllers
                 return View(ex.Message);
             }
         }
-        [HttpPost]
+        [HttpPost] //Sending Mail through SMTP protocol using web.config file
         public ActionResult GetMail(string email)
         {
             try

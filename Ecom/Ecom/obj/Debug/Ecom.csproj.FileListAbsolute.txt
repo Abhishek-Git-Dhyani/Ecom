@@ -168,3 +168,6 @@ D:\Projects\Sample\Ecom\Ecom\obj\Debug\Ecom.csproj.CoreCompileInputs.cache
 D:\Projects\Sample\Ecom\Ecom\obj\Debug\Ecom.csproj.CopyComplete
 D:\Projects\Sample\Ecom\Ecom\obj\Debug\Ecom.dll
 D:\Projects\Sample\Ecom\Ecom\obj\Debug\Ecom.pdb
+D:\Projects\Sample\Ecom\Ecom\bin\IronPdf.Assets.Rendering.Windows.dll
+D:\Projects\Sample\Ecom\Ecom\bin\IronPdf.dll
+D:\Projects\Sample\Ecom\Ecom\bin\IronPdf.xml

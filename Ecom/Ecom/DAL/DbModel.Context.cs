@@ -29,5 +29,7 @@ namespace Ecom.DAL
         public virtual DbSet<contact> contacts { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
+        public virtual DbSet<CBC_Report> CBC_Report { get; set; }
+        public virtual DbSet<userReport> userReports { get; set; }
     }
 }

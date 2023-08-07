@@ -29,7 +29,7 @@ namespace Ecom.DAL
         public string userId { get; set; }
         public string password { get; set; }
         public string salt { get; set; }
-        public string userType { get; set; } = "USER";
+        public string userType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<address> addresses { get; set; }

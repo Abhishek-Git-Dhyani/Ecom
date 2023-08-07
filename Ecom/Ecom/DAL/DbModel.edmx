@@ -58,6 +58,30 @@
           <Property Name="lattitude" Type="nvarchar" MaxLength="100" />
           <Property Name="longitude" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="CBC_Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="reportId" Type="int" Nullable="false" />
+          <Property Name="BloodGroup" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="RBC_count" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="WBC_count" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Hemoglobin" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Hematrocit" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="platelet" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="nvarchar" MaxLength="20" />
+          <Property Name="CBC_Report" Type="bit" />
+          <Property Name="disorder_Report" Type="bit" />
+          <Property Name="Prescription_Report" Type="bit" />
+        </EntityType>
         <Association Name="FK__address__id__3B75D760">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="address" Type="Self.address" Multiplicity="*" />
@@ -87,6 +111,8 @@
           <EntitySet Name="contacts" EntityType="Self.contacts" Schema="account" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="account" store:Type="Tables" />
           <EntitySet Name="Stores" EntityType="Self.Stores" Schema="Inventory" store:Type="Tables" />
+          <EntitySet Name="CBC_Report" EntityType="Self.CBC_Report" Schema="Reports" store:Type="Tables" />
+          <EntitySet Name="userReport" EntityType="Self.userReport" Schema="Reports" store:Type="Tables" />
           <AssociationSet Name="FK__address__id__3B75D760" Association="Self.FK__address__id__3B75D760">
             <End Role="users" EntitySet="users" />
             <End Role="address" EntitySet="address" />
@@ -180,6 +206,8 @@
             <End Role="contacts" EntitySet="contacts" />
           </AssociationSet>
           <EntitySet Name="Stores" EntityType="eCommerceModel.Store" />
+          <EntitySet Name="CBC_Report" EntityType="eCommerceModel.CBC_Report" />
+          <EntitySet Name="userReports" EntityType="eCommerceModel.userReport" />
         </EntityContainer>
         <EntityType Name="Store">
           <Key>
@@ -194,6 +222,30 @@
           <Property Name="pincode" Type="Int32" Nullable="false" />
           <Property Name="lattitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="longitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CBC_Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="reportId" Type="Int32" Nullable="false" />
+          <Property Name="BloodGroup" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="RBC_count" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="WBC_count" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="Hemoglobin" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="Hematrocit" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+          <Property Name="platelet" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CBC_Report" Type="Boolean" />
+          <Property Name="disorder_Report" Type="Boolean" />
+          <Property Name="Prescription_Report" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -255,6 +307,32 @@
                 <ScalarProperty Name="CenterCode" ColumnName="CenterCode" />
                 <ScalarProperty Name="storeId" ColumnName="storeId" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CBC_Report">
+            <EntityTypeMapping TypeName="eCommerceModel.CBC_Report">
+              <MappingFragment StoreEntitySet="CBC_Report">
+                <ScalarProperty Name="platelet" ColumnName="platelet" />
+                <ScalarProperty Name="Hematrocit" ColumnName="Hematrocit" />
+                <ScalarProperty Name="Hemoglobin" ColumnName="Hemoglobin" />
+                <ScalarProperty Name="WBC_count" ColumnName="WBC_count" />
+                <ScalarProperty Name="RBC_count" ColumnName="RBC_count" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="reportId" ColumnName="reportId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userReports">
+            <EntityTypeMapping TypeName="eCommerceModel.userReport">
+              <MappingFragment StoreEntitySet="userReport">
+                <ScalarProperty Name="Prescription_Report" ColumnName="Prescription_Report" />
+                <ScalarProperty Name="disorder_Report" ColumnName="disorder_Report" />
+                <ScalarProperty Name="CBC_Report" ColumnName="CBC_Report" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
