@@ -58,5 +58,31 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CBC_Report">
+      <EntityTypeMapping TypeName="eCommerceModel.CBC_Report">
+        <MappingFragment StoreEntitySet="CBC_Report">
+          <ScalarProperty Name="platelet" ColumnName="platelet" />
+          <ScalarProperty Name="Hematrocit" ColumnName="Hematrocit" />
+          <ScalarProperty Name="Hemoglobin" ColumnName="Hemoglobin" />
+          <ScalarProperty Name="WBC_count" ColumnName="WBC_count" />
+          <ScalarProperty Name="RBC_count" ColumnName="RBC_count" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="reportId" ColumnName="reportId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userReports">
+      <EntityTypeMapping TypeName="eCommerceModel.userReport">
+        <MappingFragment StoreEntitySet="userReport">
+          <ScalarProperty Name="Prescription_Report" ColumnName="Prescription_Report" />
+          <ScalarProperty Name="disorder_Report" ColumnName="disorder_Report" />
+          <ScalarProperty Name="CBC_Report" ColumnName="CBC_Report" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

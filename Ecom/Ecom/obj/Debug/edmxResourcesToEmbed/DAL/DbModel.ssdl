@@ -53,6 +53,30 @@
     <Property Name="lattitude" Type="nvarchar" MaxLength="100" />
     <Property Name="longitude" Type="nvarchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="CBC_Report">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="reportId" Type="int" Nullable="false" />
+    <Property Name="BloodGroup" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="RBC_count" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="WBC_count" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="Hemoglobin" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="Hematrocit" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="platelet" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="userReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="nvarchar" MaxLength="20" />
+    <Property Name="CBC_Report" Type="bit" />
+    <Property Name="disorder_Report" Type="bit" />
+    <Property Name="Prescription_Report" Type="bit" />
+  </EntityType>
   <Association Name="FK__address__id__3B75D760">
     <End Role="users" Type="Self.users" Multiplicity="0..1" />
     <End Role="address" Type="Self.address" Multiplicity="*" />
@@ -82,6 +106,8 @@
     <EntitySet Name="contacts" EntityType="Self.contacts" Schema="account" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="account" store:Type="Tables" />
     <EntitySet Name="Stores" EntityType="Self.Stores" Schema="Inventory" store:Type="Tables" />
+    <EntitySet Name="CBC_Report" EntityType="Self.CBC_Report" Schema="Reports" store:Type="Tables" />
+    <EntitySet Name="userReport" EntityType="Self.userReport" Schema="Reports" store:Type="Tables" />
     <AssociationSet Name="FK__address__id__3B75D760" Association="Self.FK__address__id__3B75D760">
       <End Role="users" EntitySet="users" />
       <End Role="address" EntitySet="address" />

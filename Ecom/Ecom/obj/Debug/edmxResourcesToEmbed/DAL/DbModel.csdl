@@ -80,6 +80,8 @@
       <End Role="contacts" EntitySet="contacts" />
     </AssociationSet>
     <EntitySet Name="Stores" EntityType="eCommerceModel.Store" />
+    <EntitySet Name="CBC_Report" EntityType="eCommerceModel.CBC_Report" />
+    <EntitySet Name="userReports" EntityType="eCommerceModel.userReport" />
   </EntityContainer>
   <EntityType Name="Store">
     <Key>
@@ -94,5 +96,29 @@
     <Property Name="pincode" Type="Int32" Nullable="false" />
     <Property Name="lattitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="longitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CBC_Report">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="reportId" Type="Int32" Nullable="false" />
+    <Property Name="BloodGroup" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="RBC_count" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="WBC_count" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="Hemoglobin" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="Hematrocit" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="platelet" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="userReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CBC_Report" Type="Boolean" />
+    <Property Name="disorder_Report" Type="Boolean" />
+    <Property Name="Prescription_Report" Type="Boolean" />
   </EntityType>
 </Schema>
